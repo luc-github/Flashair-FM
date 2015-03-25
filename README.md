@@ -3,7 +3,7 @@ It is based on available code :  https://flashair-developers.com/en/documents/tu
 please have also a check to : https://flashair-developers.com/en/documents/api/
 
 #UI
-
+<img src=https://github.com/luc-github/Flashair-FM/blob/master/Images/UI.jpg?raw=true>
 #Feature
 It allows to browse, upload and delete files on SD Card and to know the current capacity of the Card
 
@@ -15,7 +15,6 @@ It allows to browse, upload and delete files on SD Card and to know the current 
    APPMODE=5   
    APPSSID=<Your-SSID>   
    APPNETWORKKEY=<Your-Password>   
-   IFMODE=1  
    APPNAME=<YourName>  
 ```
 For more information please check : https://flashair-developers.com/en/documents/api/config/
