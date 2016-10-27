@@ -1,0 +1,6 @@
+{
+  "name": "Flashair-fm",
+  "tagline": "FlashAir Web File Manager",
+  "body": "# FlashAir Web File Manager\r\nIt is based on available code :  https://flashair-developers.com/en/documents/tutorials/advanced/2/     \r\nplease have also a check to : https://flashair-developers.com/en/documents/api/\r\n\r\n#UI\r\n<img src=https://github.com/luc-github/Flashair-FM/blob/master/Images/UI.jpg?raw=true>\r\n#Feature\r\nIt allows to browse, upload and delete files on SD Card and to know the current capacity of the Card\r\n\r\n#Configuration\r\n1 - Backup the content of SD_WLAN of your SD Card - just in case\r\n2 - Add/Replace the content of SD_WLAN by the one of github   \r\n3 - Edit the CONFIG based on your network - I have prepared CONFIG-SAMPLE, it joins existing network - just need to complete SSID/Password and Name    \r\n```\r\n   APPMODE=5   \r\n   APPSSID=<Your-SSID>   \r\n   APPNETWORKKEY=<Your-Password>   \r\n   APPNAME=<YourName>  \r\n```\r\nFor more information please check : https://flashair-developers.com/en/documents/api/config/\r\n\r\n4 - you can edit the List.htm to change the header\r\n```\r\n   <h1>Wifi SD Card</h1>\r\n```\r\n \r\n5 - Unplug and replug card to refresh settings\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
