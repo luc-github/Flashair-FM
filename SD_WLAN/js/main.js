@@ -61,9 +61,9 @@ function showFileList(path) {
     $.each(wlansd, function() {
 		var file = this;
 		// Skip hidden file.
-		if ( file["attr"] & 0x02 ) {
-			return;
-		}
+		//if ( file["attr"] & 0x02 ) {
+		//	return;
+		//}
 		// Make a link to directories .
 		var filelink = $('<a href="javascript:void(0)"></a>');
 		var caption = file["fname"] ;
@@ -99,6 +99,12 @@ function showFileList(path) {
 		var fileobj = $("<div></div>");
 		var filesize = file["fsize"];
 		var filesizeunit='Oct';
+		var filedate = ((file["fdate"] & 0x1e0) >> 5).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + '/' +
+						(file["fdate"] & 0x1f).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + '/' +
+					   (((file["fdate"] & 0xfe00) >>> 9) + 1980).toString();
+		var filetime = ((file["ftime"] & 0xf800) >>> 11).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + ':' + 
+					   ((file["ftime"] & 0x7c0) >> 5).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + ':' + 
+					   ((file["ftime"] & 0x1f) * 2).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false});
 		var item='';
         if ( ! (file["attr"] & 0x10) ) {
             filelink.addClass("file").attr('href', file["r_uri"] + '/' + file["fname"]).attr("target","_blank");
@@ -116,7 +122,7 @@ function showFileList(path) {
 			filesize =  Number(filesize / 1024).toFixed(2);
 			filesizeunit='G0';
 			}
-			item = fileicon + caption +'&nbsp;' + filesize + filesizeunit+'&nbsp;'+filedownload +'&nbsp;'+ filedel ;
+			item = fileicon + caption +'&nbsp;' + filesize + filesizeunit+'&nbsp;'+filedate+'&nbsp;'+filetime+'&nbsp;'+filedownload +'&nbsp;'+ filedel ;
         }
 		// Append a file entry or directory to the end of the list.
         $("#list").append(
