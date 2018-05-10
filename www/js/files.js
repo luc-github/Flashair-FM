@@ -203,7 +203,8 @@ function files_showdeletebutton(index){
     var entry = files_file_list[index]; 
      if (!path.endsWith("/"))path+="/";
      path+= entry.name;
-     if ((path == "/SD_WLAN") || (path == "/SD_WLAN/CONFIG")|| (path == "/SD_WLAN/List.htm")) return false;
+     path.toUpperCase();
+     if ((path == "/SD_WLAN") || (path == "/SD_WLAN/CONFIG")|| (path== "/SD_WLAN/LIST.HTM")) return false;
    return true;
 }
 
