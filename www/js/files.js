@@ -5,11 +5,20 @@ var files_file_list_cache = [];
 var files_status_list = [];
 var files_current_file_index = -1;
 var files_error_status ="";
+var show_sd_wlan = false;
+
+function toogle_show_SD_WLAN(state){
+show_sd_wlan = !show_sd_wlan;
+if (typeof state != 'undefined')show_sd_wlan=state;
+if (show_sd_wlan) {
+     document.getElementById('show_sd_wlan_icon').innerHTML =  get_icon_svg("ok", "1.3em","1.2em");
+} else document.getElementById('show_sd_wlan_icon').innerHTML ="";
+if (files_currentPath.startsWith ( "/SD_WLAN") ||  (files_currentPath=="/")) files_refreshFiles("/");
+}
 
 function init_files_panel(){
     document.getElementById('files_createdir_btn').style.display="none";
     document.getElementById('files_refresh_btn').style.display="none";
-    files_refreshFiles(files_currentPath);
 }
 
 function navbar(){
@@ -190,6 +199,11 @@ function files_click_file(index){
 }
 
 function files_showdeletebutton(index){
+    var path = files_currentPath;
+    var entry = files_file_list[index]; 
+     if (!path.endsWith("/"))path+="/";
+     path+= entry.name;
+     if ((path == "/SD_WLAN") || (path == "/SD_WLAN/CONFIG")|| (path == "/SD_WLAN/List.htm")) return false;
    return true;
 }
 
@@ -287,6 +301,10 @@ function files_list_success(response_text){
                 }
             }
         }
+    }
+    if ((files_currentPath == "/") && (show_sd_wlan)) {
+            var file_entry = {path: "/", name:"SD_WLAN", size: "-1", isdir: true, datetime: "",isprintable:false};
+            files_file_list.push(file_entry);  
     }
     files_build_display_filelist();
 }

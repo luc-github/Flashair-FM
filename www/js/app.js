@@ -4,6 +4,7 @@ window.onload = function() {
     setInterval(function(){ process_cmd(); }, 100);
     document.getElementById("UI_VERSION").innerHTML=web_ui_version;
     document.getElementById("UI_TITLE").innerHTML=web_ui_title;
+    toogle_show_SD_WLAN(false);
     build_language_menu();
      initUI();
 };
