@@ -1,0 +1,3 @@
+//german
+var germantrans = { 
+};

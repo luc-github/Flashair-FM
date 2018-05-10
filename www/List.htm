@@ -1,0 +1,160 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flashair WebUI</title>
+    <script>var web_ui_title="File Manager for Flashair";</script>
+    <script>var web_ui_version="2.0b1";</script>
+    <!-- smoosh -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- endsmoosh -->
+  </head>
+  <body>
+        <!-- topnavbar -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; padding-right:2em;" >
+            <div class="navbar-header">
+                <span class="navbar-brand">
+                    <span id="UI_TITLE">Flashair</span>
+                </span>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#">
+                           <i class="dropbtn">
+                               <svg width='1.3em' height='1.2em' viewBox='0 0 1300 1200'>
+                                    <g transform='translate(50,1200) scale(1, -1)'>
+                                        <path  fill='#337AB7' d='M600 1177q117 0 224 -45.5t184.5 -123t123 -184.5t45.5 -224t-45.5 -224t-123 -184.5t-184.5 -123t-224 -45.5t-224 45.5t-184.5 123t-123 184.5t-45.5 224t45.5 224t123 184.5t184.5 123t224 45.5zM675 1000h-150q-10 0 -17.5 -7.5t-7.5 -17.5v-150q0 -10 7.5 -17.5 t17.5 -7.5h150q10 0 17.5 7.5t7.5 17.5v150q0 10 -7.5 17.5t-17.5 7.5zM675 700h-250q-10 0 -17.5 -7.5t-7.5 -17.5v-50q0 -10 7.5 -17.5t17.5 -7.5h75v-200h-75q-10 0 -17.5 -7.5t-7.5 -17.5v-50q0 -10 7.5 -17.5t17.5 -7.5h350q10 0 17.5 7.5t7.5 17.5v50q0 10 -7.5 17.5 t-17.5 7.5h-75v275q0 10 -7.5 17.5t-17.5 7.5z' />
+                                    </g>
+                                </svg>
+                           </i> 
+                    </a>
+                    <div class="dropdown-content">
+                            <div class="menu-title">
+                                <center>
+                                 <span >UI: </span>
+                                 <span id='UI_VERSION' ></span>
+                                 </center>
+                             </div>
+                             <div class="menu-divider"></div>
+                            <a href="https://github.com/luc-github/Flashair-FM" >
+                                <span class="pull-right" translate>Github</span>
+                                <span class="pull-left">
+                                    <svg width='1.3em' height='1.2em' viewBox='0 0 1300 1200'>
+                                        <g transform='translate(50,1200) scale(1, -1)'>
+                                            <path  d='M600 1174q33 0 74 -5l38 -152l5 -1q49 -14 94 -39l5 -2l134 80q61 -48 104 -105l-80 -134l3 -5q25 -44 39 -93l1 -6l152 -38q5 -43 5 -73q0 -34 -5 -74l-152 -38l-1 -6q-15 -49 -39 -93l-3 -5l80 -134q-48 -61 -104 -105l-134 81l-5 -3q-44 -25 -94 -39l-5 -2l-38 -151 q-43 -5 -74 -5q-33 0 -74 5l-38 151l-5 2q-49 14 -94 39l-5 3l-134 -81q-60 48 -104 105l80 134l-3 5q-25 45 -38 93l-2 6l-151 38q-6 42 -6 74q0 33 6 73l151 38l2 6q13 48 38 93l3 5l-80 134q47 61 105 105l133 -80l5 2q45 25 94 39l5 1l38 152q43 5 74 5zM600 815 q-89 0 -152 -63t-63 -151.5t63 -151.5t152 -63t152 63t63 151.5t-63 151.5t-152 63z' />
+                                        </g>
+                                    </svg>
+                                </span>
+                                <span class="clearfix"></span>
+                            </a>
+                </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#">
+                                <span class="dropbtn text-info" id="translate_menu"></span>
+                    </a>
+                    <div class="dropdown-content" id="lang_menu">
+                    </div>
+                </li>
+            </ul>
+             </nav>
+        <!-- /topnavbar -->
+      <div  id="filesPanel"  class="panel panel-default" >
+        <div class="panel-heading">
+           <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left" >
+                       <table >
+                           <tr> 
+                                <td>
+                                 <button id="files_createdir_btn" onclick="files_Createdir()" class="btn btn-info btn-xs hide_it" style="padding-bottom:4px;">
+                                    <svg width="1.5em" height="1.2em" viewBox="5 10 30 10">
+                                        <rect x="5" y="10" width="30" height="20" rx="2" ry="2" fill="currentColor" />
+                                        <rect x="20" y="5" width="15" height="15" rx="2" ry="2" fill="currentColor" />
+                                        <text x="15" y="25" font-size="18"  font-weight="800"  fill="#5BC0DE">+</text>
+                                    </svg>
+                                </button>
+                                </td>
+                                <td>&nbsp;</td>
+                                <td id="navigationbar">
+                                </td>
+                                <td>&nbsp;&nbsp;</td>
+                                <td><div id="files_nav_loader" style="width:1em;height:1em" class="loader hide_it"></div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="hide_it pull-right" id="files_uploading_msg">
+                        <table>
+                            <tr>
+                                <td><span translate>Uploading </span></td>
+                                <td>&nbsp;</td>
+                                <td><span class="text-info" id="files_currentUpload_msg"></span></td>
+                                <td>&nbsp;</td>
+                                <td width='100px'><progress name='prg' id='files_prg' max='100'></progress></td>
+                                <td><span id="files_percent_upload"></span>%</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pull-right" id="files_navigation_buttons">
+                        <button class="btn btn-xs btn-primary"  onclick="files_filter_button(this);" style="padding-top:4px;">
+                            <span  id="files_filter_glyph" >
+                                <svg width='1.3em' height='1.2em' viewBox='0 0 1300 1200'>
+                                    <g transform='translate(50,1200) scale(1, -1)'>
+                                        <path  fill='currentColor' d='M150 1200h900q21 0 35.5 -14.5t14.5 -35.5t-14.5 -35.5t-35.5 -14.5h-900q-21 0 -35.5 14.5t-14.5 35.5t14.5 35.5t35.5 14.5zM700 500v-300l-200 -200v500l-350 500h900z' />
+                                    </g>
+                                </svg>
+                            </span>
+                        </button>
+                        <button class="btn btn-xs btn-primary" id="files_refresh_btn"  onclick="files_error_status='';files_refreshFiles(files_currentPath)" translate>Refresh</button>
+                        <button class="btn btn-xs btn-primary hide_it" id="upload_btn" onclick="files_select_upload()"  translate>Upload</button>
+                        <input type="file" id="files_input_file" onchange="files_check_if_upload()"  style="display:none" />
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="panel-body panel-height panel-max-height panel-scroll panel-flex-main">
+            <div id="files_list_loader" class="loader hide_it" style="margin:auto"></div>
+            <ul class="list-group" id="files_fileList">
+            </ul>
+        </div>
+        <div class="panel-footer panel-footer-height">
+             <div class="row hide_it" id="files_space_sd_status">
+                <div class="col-md-12" >
+                   <div class="form-inline" >
+                        <div class="form-group">
+                             <span ><span translate>Total:</span>&nbsp;<span id="files_sd_status_total"></span></span> 
+                             <span >&nbsp;|&nbsp;</span>
+                             <span ><span translate>Used:</span>&nbsp;<span id="files_sd_status_used"> </span></span> 
+                             <span >&nbsp;</span>
+                            <span class="noshowonlowres">| &nbsp;</span>
+                            <span class="form-inline" >
+                                    <div class="form-group">
+                                        <span><span translate>Ocupation:</span>
+                                        <meter id="files_sd_status_occupation" style='width:150px' min='0' max='100' high='90' value=50></meter></span>
+                                        <span  id="files_sd_status_percent"></span><span>%</span>
+                                    </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row " id="files_status_sd_status">
+                <div class="col-md-12" >
+                    <span id="files_sd_status_msg"></span>
+                </div>    
+            </div>
+        </div>
+    </div>
+     <!-- template -->
+        <file-include w3-include-html="'sub/alertdlg.html'"></file-include>
+        <file-include w3-include-html="'sub/confirmdlg.html'"></file-include>
+        <file-include w3-include-html="'sub/inputdlg.html'"></file-include>
+     <!-- / template -->
+    <!-- smoosh -->
+    <script src="js/app.js"></script>
+    <!-- endsmoosh -->
+  </body>
+</html>

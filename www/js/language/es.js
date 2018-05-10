@@ -1,0 +1,3 @@
+//Spanish
+var spanishtrans = {
+};
