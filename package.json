@@ -12,19 +12,19 @@
   "author": "Luc LEBOSSE",
   "license": "MIT",
   "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-clean-css": "^3.9.4",
-    "gulp-concat": "^2.6.1",
-    "gulp-gzip": "^1.4.2",
-    "gulp-htmlmin": "^4.0.0",
-    "gulp-if": "^2.0.2",
-    "gulp-jshint": "^2.1.0",
-    "gulp-remove-code": "^3.0.1",
-    "gulp-replace": "^0.6.1",
-    "gulp-smoosher": "0.0.9",
-    "gulp-uglify": "^3.0.0",
-    "gulp-zip": "^4.1.0",
-    "jshint": "^2.9.5"
+    "del": "latest",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "latest",
+    "gulp-concat": "latest",
+    "gulp-gzip": "latest",
+    "gulp-htmlmin": "latest",
+    "gulp-if": "latest",
+    "gulp-jshint": "latest",
+    "gulp-remove-code": "latest",
+    "gulp-replace": "latest",
+    "gulp-smoosher": "latest",
+    "gulp-uglify": "latest",
+    "gulp-zip": "latest",
+    "jshint": "latest"
   }
 }
