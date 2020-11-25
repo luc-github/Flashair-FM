@@ -110,14 +110,14 @@ function process_files_Createdir(answer){
 
 function gettimestamp(){
     var timestring;
-	var dt = new Date();
-	var year = (dt.getFullYear() - 1980) << 9;
-	var month = (dt.getMonth() + 1) << 5;
-	var date = dt.getDate();
-	var hours = dt.getHours() << 11;
-	var minites = dt.getMinutes() << 5;
-	var seconds = Math.floor(dt.getSeconds() / 2);
-	timestring = "0x" + (year + month + date).toString(16) + (hours + minites + seconds).toString(16);
+    var dt = new Date();
+    var year = (dt.getFullYear() - 1980) << 9;
+    var month = (dt.getMonth() + 1) << 5;
+    var date = dt.getDate();
+    var hours = dt.getHours() << 11;
+    var minites = dt.getMinutes() << 5;
+    var seconds = Math.floor(dt.getSeconds() / 2);
+    timestring = "0x" + (year + month + date).toString(16) + (hours + minites + seconds).toString(16);
     return timestring;
 }
 
@@ -288,12 +288,12 @@ function files_list_success(response_text){
                 else isdirectory = false;
                 datev = parseInt(data[4]);
                 var filedate = ((datev & 0x1e0) >> 5).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + '/' +
-						(datev & 0x1f).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + '/' +
-					   (((datev & 0xfe00) >>> 9) + 1980).toString();
+                        (datev & 0x1f).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + '/' +
+                       (((datev & 0xfe00) >>> 9) + 1980).toString();
                 timev = parseInt(data[5]);
                 var filetime = ((timev & 0xf800) >>> 11).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + ':' + 
-					   ((timev & 0x7c0) >> 5).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + ':' + 
-					   ((timev & 0x1f) * 2).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false});
+                       ((timev & 0x7c0) >> 5).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}) + ':' + 
+                       ((timev & 0x1f) * 2).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false});
                 var d = filedate + " " + filetime;
                 var isprint = files_canbeprinted(file_name,isdirectory);
                 if (files_is_filename (file_name)) {
@@ -408,8 +408,10 @@ function files_select_upload(){
 function files_check_if_upload(){
     console.log("Set time");
     var timestring = gettimestamp();
+    var url = "/upload.cgi?UPDIR="+files_currentPath;
+    SendGetHttp(url)
     //time need to be set first or first operation won't have it 
-    var url = "/upload.cgi?FTIME=" + timestring ;
+    url = "/upload.cgi?FTIME=" + timestring ;
     files_error_status = "Create " + name;
     SendGetHttp(url,files_start_upload, cannot_upload );
 }
